@@ -35,10 +35,5 @@ au InsertLeave * match ExtraWhiteSpace /\s\+$/
 " Strip trailing whitespace
 au FileType c,cpp,java,php,javascript,ruby,html au BufWritePre <buffer> :%s/\s\+$//e
 
-let g:ctrlp_prompt_mappings = {
-  \ 'AcceptSelection("e")': [],
-  \ 'AcceptSelection("t")': ['<cr>', '<c-t>', '<2-LeftMouse>'],
-  \ }
-
 let g:Powerline_symbols = 'fancy'
 nmap <leader>b :CtrlPBuffer<CR>
