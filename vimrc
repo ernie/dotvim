@@ -37,3 +37,13 @@ au FileType c,cpp,java,php,javascript,ruby,html au BufWritePre <buffer> :%s/\s\+
 
 let g:Powerline_symbols = 'fancy'
 nmap <leader>b :CtrlPBuffer<CR>
+
+" disable arrow keys
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
