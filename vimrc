@@ -33,10 +33,20 @@ au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhiteSpace /\s\+$/
 
 " Strip trailing whitespace
-au FileType c,cpp,java,php,javascript,ruby,html au BufWritePre <buffer> :%s/\s\+$//e
+function! <SID>StripTrailingWhitespaces()
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  %s/\s\+$//e
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
 
-let g:Powerline_symbols = 'fancy'
-nmap <leader>b :CtrlPBuffer<CR>
+au FileType c,cpp,java,php,javascript,ruby,html
+  \ au BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " disable arrow keys
 map <up> <nop>
@@ -47,3 +57,8 @@ imap <up> <nop>
 imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
+
+" Extra plugin configuration
+let g:Powerline_symbols = 'fancy'
+nmap <leader>b :CtrlPBuffer<CR>
+
