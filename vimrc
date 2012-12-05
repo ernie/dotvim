@@ -14,6 +14,8 @@ set expandtab
 set wildmode=list:longest
 set laststatus=2
 set number
+set grepprg=ag\ --nogroup\ --nocolor\ --column
+set grepformat=%f:%l:%c:%m
 
 let mapleader = ","
 
@@ -48,6 +50,13 @@ endfunction
 au FileType c,cpp,java,php,javascript,ruby,html
   \ au BufWritePre * :call <SID>StripTrailingWhitespaces()
 
+" Use Marked.app for previewing Markdown files
+function! s:setupMarkdownPreview()
+  nnoremap <leader>p :silent !open -a Marked.app '%:p'<cr>
+endfunction
+
+au BufRead,BufNewFile *.{md,markdown} call s:setupMarkdownPreview()
+
 " disable arrow keys
 map <up> <nop>
 map <down> <nop>
@@ -61,4 +70,4 @@ imap <right> <nop>
 " Extra plugin configuration
 let g:Powerline_symbols = 'fancy'
 nmap <leader>b :CtrlPBuffer<CR>
-
+let g:ackprg = 'ag --nogroup --nocolor --column'
