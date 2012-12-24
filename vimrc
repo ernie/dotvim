@@ -48,7 +48,7 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 
 au FileType c,cpp,java,php,javascript,ruby,html
-  \ au BufWritePre * :call <SID>StripTrailingWhitespaces()
+  \ au BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
 " Use Marked.app for previewing Markdown files
 function! s:setupMarkdownPreview()
