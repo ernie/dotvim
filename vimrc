@@ -68,6 +68,7 @@ imap <left> <nop>
 imap <right> <nop>
 
 " Extra plugin configuration
-let g:Powerline_symbols = 'fancy'
 nmap <leader>b :CtrlPBuffer<CR>
 let g:ackprg = 'ag --nogroup --nocolor --column'
+" Load Powerline plugin
+python from powerline.bindings.vim import source_plugin; source_plugin()
