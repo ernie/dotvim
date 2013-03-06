@@ -19,7 +19,8 @@ set grepformat=%f:%l:%c:%m
 
 let mapleader = ","
 
-colorscheme ir_black
+set background=dark
+colorscheme solarized
 
 set nobackup                      " Don't make a backup before overwriting a file.
 set nowritebackup                 " And again.
@@ -73,6 +74,5 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 " Load Powerline plugin
 python from powerline.bindings.vim import source_plugin; source_plugin()
 " Improve appearance of vim-gitgutter
-highlight clear SignColumn
 sign define dummy
 au BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
