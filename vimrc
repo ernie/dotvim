@@ -76,3 +76,5 @@ python from powerline.bindings.vim import source_plugin; source_plugin()
 " Improve appearance of vim-gitgutter
 sign define dummy
 au BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
+let g:html_font = 'DejaVu Sans Mono'
+let g:html_number_lines = 0
