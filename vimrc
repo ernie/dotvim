@@ -79,4 +79,3 @@ au BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 " Improve behavior of vim-copy-as-rtf
 let g:html_font = 'DejaVu Sans Mono'
 let g:html_number_lines = 0
-let g:copy_as_rtf_using_local_buffer = 1
