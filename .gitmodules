@@ -21,7 +21,7 @@
 	url = git://github.com/MarcWeber/vim-addon-mw-utils.git
 [submodule "bundle/vim-copy-as-rtf"]
 	path = bundle/vim-copy-as-rtf
-	url = git://github.com/aniero/vim-copy-as-rtf.git
+	url = git://github.com/zerowidth/vim-copy-as-rtf.git
 [submodule "bundle/vim-gitgutter"]
 	path = bundle/vim-gitgutter
 	url = git://github.com/airblade/vim-gitgutter.git
