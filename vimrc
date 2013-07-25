@@ -72,7 +72,9 @@ imap <right> <nop>
 nmap <leader>b :CtrlPBuffer<CR>
 let g:ackprg = 'ag --nogroup --nocolor --column'
 " Load Powerline plugin
-python from powerline.bindings.vim import source_plugin; source_plugin()
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
 " Improve appearance of vim-gitgutter
 sign define dummy
 au BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
