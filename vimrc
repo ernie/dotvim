@@ -51,6 +51,8 @@ endfunction
 au FileType c,cpp,java,php,javascript,ruby,html
   \ au BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
+au FileType go au BufWritePre <buffer> Fmt
+
 " Use Marked.app for previewing Markdown files
 function! s:setupMarkdownPreview()
   nnoremap <leader>p :silent !open -a Marked.app '%:p'<cr>
@@ -81,3 +83,5 @@ au BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 " Improve behavior of vim-copy-as-rtf
 let g:html_font = 'DejaVu Sans Mono'
 let g:html_number_lines = 0
+" Configure markdown code block syntax highlighting
+let g:markdown_fenced_languages=['ruby', 'erb=eruby', 'javascript', 'html', 'sh']
