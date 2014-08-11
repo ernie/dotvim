@@ -73,6 +73,9 @@ imap <right> <nop>
 " Extra plugin configuration
 nmap <leader>b :CtrlPBuffer<CR>
 let g:ackprg = 'ag --nogroup --nocolor --column'
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_use_caching = 0
+
 " Load Powerline plugin
 python from powerline.vim import setup as powerline_setup
 python powerline_setup()
