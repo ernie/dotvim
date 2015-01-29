@@ -43,3 +43,6 @@
 [submodule "bundle/vimerl"]
 	path = bundle/vimerl
 	url = git@github.com:jimenezrick/vimerl.git
+[submodule "bundle/vim-jsx"]
+	path = bundle/vim-jsx
+	url = git@github.com:mxw/vim-jsx.git
