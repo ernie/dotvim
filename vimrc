@@ -53,9 +53,9 @@ au FileType c,cpp,java,php,javascript,ruby,html
 
 au FileType go au BufWritePre <buffer> Fmt
 
-" Use Marked.app for previewing Markdown files
+" Use Marked 2.app for previewing Markdown files
 function! s:setupMarkdownPreview()
-  nnoremap <leader>p :silent !open -a Marked.app '%:p'<cr>
+  nnoremap <leader>p :silent !open -a 'Marked 2.app' '%:p'<cr>
 endfunction
 
 au BufRead,BufNewFile *.{md,markdown} call s:setupMarkdownPreview()
