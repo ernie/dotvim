@@ -14,7 +14,7 @@ set expandtab
 set wildmode=list:longest
 set laststatus=2
 set number
-set grepprg='ag -s --nogroup --nocolor --column'
+set grepprg=ag\ -s\ --nogroup\ --nocolor\ --column
 set grepformat=%f:%l:%c:%m
 
 let mapleader = ","
