@@ -14,7 +14,7 @@ set expandtab
 set wildmode=list:longest
 set laststatus=2
 set number
-set grepprg=ag\ --nogroup\ --nocolor\ --column
+set grepprg='ag -s --nogroup --nocolor --column'
 set grepformat=%f:%l:%c:%m
 
 let mapleader = ","
@@ -72,7 +72,7 @@ imap <right> <nop>
 
 " Extra plugin configuration
 nmap <leader>b :CtrlPBuffer<CR>
-let g:ackprg = 'ag --nogroup --nocolor --column'
+let g:ackprg = 'ag -s --nogroup --nocolor --column'
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_use_caching = 0
 let g:ctrlp_working_path_mode = 0
