@@ -72,7 +72,7 @@ imap <right> <nop>
 
 " Extra plugin configuration
 nmap <leader>b :CtrlPBuffer<CR>
-let g:ackprg = 'ag -s --nogroup --nocolor --column'
+let g:ackprg = 'ag -s --vimgrep'
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_use_caching = 0
 let g:ctrlp_working_path_mode = 0
