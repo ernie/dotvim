@@ -51,8 +51,6 @@ endfunction
 au FileType c,cpp,java,php,javascript,ruby,html
   \ au BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
-au FileType go au BufWritePre <buffer> Fmt
-
 " Use Marked 2.app for previewing Markdown files
 function! s:setupMarkdownPreview()
   nnoremap <leader>p :silent !open -a 'Marked 2.app' '%:p'<cr>
