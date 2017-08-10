@@ -1,5 +1,3 @@
-call pathogen#infect()
-
 syntax on
 filetype plugin indent on
 
@@ -21,6 +19,29 @@ set grepformat=%f:%l:%c:%m
 let mapleader = ","
 
 set background=dark
+call plug#begin()
+Plug 'mileszs/ack.vim'
+Plug 'godlygeek/tabular'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-markdown'
+Plug 'zerowidth/vim-copy-as-rtf'
+Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tpope/vim-surround'
+Plug 'mattn/emmet-vim'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'derekwyatt/vim-scala'
+Plug 'elixir-lang/vim-elixir'
+Plug 'jimenezrick/vimerl'
+Plug 'mxw/vim-jsx'
+Plug 'tpope/vim-repeat'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'lambdatoast/elm.vim'
+Plug 'kchmck/vim-coffee-script'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+call plug#end()
+
 colorscheme solarized
 
 set nobackup                      " Don't make a backup before overwriting a file.
