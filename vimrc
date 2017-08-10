@@ -19,6 +19,7 @@ set grepformat=%f:%l:%c:%m
 let mapleader = ","
 
 set background=dark
+
 call plug#begin()
 Plug 'mileszs/ack.vim'
 Plug 'godlygeek/tabular'
