@@ -13,8 +13,7 @@ set expandtab
 set wildmode=list:longest
 set laststatus=2
 set number
-set grepprg=ag\ -s\ --nogroup\ --nocolor\ --column
-set grepformat=%f:%l:%c:%m
+set grepprg=rg\ --vimgrep
 
 let mapleader = ","
 
@@ -93,10 +92,10 @@ imap <right> <nop>
 
 " Extra plugin configuration
 nmap <leader>b :CtrlPBuffer<CR>
-let g:ackprg = 'ag -s --nogroup --nocolor --column'
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ackprg = 'rg --vimgrep --no-heading'
+let g:ctrlp_user_command = 'rg --files %s'
 let g:ctrlp_use_caching = 0
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = 'ra'
 
 " Load Powerline plugin
 python from powerline.vim import setup as powerline_setup
