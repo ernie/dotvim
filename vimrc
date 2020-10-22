@@ -26,7 +26,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown'
 Plug 'zerowidth/vim-copy-as-rtf'
 Plug 'airblade/vim-gitgutter'
-Plug 'altercation/vim-colors-solarized'
+Plug 'jeffmccune/vim-colors-solarized'
 Plug 'tpope/vim-surround'
 Plug 'mattn/emmet-vim'
 Plug 'mustache/vim-mustache-handlebars'
@@ -40,6 +40,9 @@ Plug 'pangloss/vim-javascript'
 Plug 'lambdatoast/elm.vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/promptline.vim'
 call plug#end()
 
 colorscheme solarized
@@ -96,11 +99,6 @@ let g:ackprg = 'rg --vimgrep --no-heading'
 let g:ctrlp_user_command = 'rg --files %s'
 let g:ctrlp_use_caching = 0
 let g:ctrlp_working_path_mode = 'ra'
-
-" Load Powerline plugin
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
 " Improve appearance of vim-gitgutter
 sign define dummy
 au BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
@@ -109,3 +107,6 @@ let g:html_font = 'DejaVu Sans Mono'
 let g:html_number_lines = 0
 " Configure markdown code block syntax highlighting
 let g:markdown_fenced_languages=['ruby', 'erb=eruby', 'javascript', 'html', 'sh']
+" Let's get airline looking pretty
+let g:airline_powerline_fonts = 1
+let g:airline_theme='solarized'
