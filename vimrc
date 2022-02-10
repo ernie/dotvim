@@ -112,7 +112,7 @@ let g:html_number_lines = 0
 let g:markdown_fenced_languages=['ruby', 'erb=eruby', 'javascript', 'html', 'sh']
 " Let's get airline looking pretty
 let g:airline_powerline_fonts = 1
-let g:airline_theme='solarized'
+let g:airline_theme='base16_solarized_dark'
 
 " CoC stuff from here down -- https://github.com/neoclide/coc.nvim
 
