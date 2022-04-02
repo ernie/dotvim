@@ -3,6 +3,8 @@ filetype plugin indent on
 
 set nocompatible
 
+set mouse=a
+set clipboard=unnamedplus
 set cursorline
 set hlsearch
 set incsearch
@@ -35,7 +37,6 @@ Plug 'derekwyatt/vim-scala'
 Plug 'elixir-lang/vim-elixir'
 Plug 'jimenezrick/vimerl'
 Plug 'tpope/vim-repeat'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
@@ -47,9 +48,15 @@ Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/promptline.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'overcache/NeoSolarized'
 call plug#end()
 
-colorscheme solarized
+colorscheme NeoSolarized
+set guifont=Hack\ Nerd\ Font\ Mono:h14
 
 set nobackup                      " Don't make a backup before overwriting a file.
 set nowritebackup                 " And again.
@@ -97,17 +104,92 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
+" Sometimes folks just wanna use command-c/command-v
+let g:neovide_input_use_logo=v:true
+vmap <D-c> "+y
+vmap <D-x> "+c
+map <D-v> <ESC>"+p
+imap <D-v> <C-r><C-o>+
+
+lua << END
+require'nvim-treesitter.configs'.setup {
+  -- One of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = "maintained",
+
+  -- Install languages synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- List of parsers to ignore installing
+  -- ignore_install = { "javascript" },
+
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
+    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
+    -- the name of the parser)
+    -- list of language that will be disabled
+    -- disable = { "c", "rust" },
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+END
+
+lua << END
+require('telescope').setup{
+  defaults = {
+    layout_strategy = 'vertical',
+    preview = {
+      treesitter = true,
+    },
+    mappings = {
+      i = {
+        -- map actions.which_key to <C-h> (default: <C-/>)
+        -- actions.which_key shows the mappings for your picker,
+        -- e.g. git_{create, delete, ...}_branch for the git_branches picker
+        ["<C-h>"] = "which_key"
+      }
+    }
+  },
+  pickers = {
+    -- Default configuration for builtin pickers goes here:
+    -- picker_name = {
+    --   picker_config_key = value,
+    --   ...
+    -- }
+    -- Now the picker_config_key will be applied every time you call this
+    -- builtin picker
+  },
+  extensions = {
+    -- Your extension configuration goes here:
+    -- extension_name = {
+    --   extension_config_key = value,
+    -- }
+    -- please take a look at the readme of the extension you want to configure
+  }
+}
+END
+
 " Extra plugin configuration
-nmap <leader>b :CtrlPBuffer<CR>
+" Find files using Telescope command-line sugar.
+nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
 let g:ackprg = 'rg --vimgrep --no-heading'
-let g:ctrlp_user_command = 'rg --files %s'
-let g:ctrlp_use_caching = 0
-let g:ctrlp_working_path_mode = 'ra'
 " Improve appearance of vim-gitgutter
 sign define dummy
 au BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 " Improve behavior of vim-copy-as-rtf
-let g:html_font = 'DejaVu Sans Mono'
+let g:html_font = 'Hack Nerd Font Mono'
 let g:html_number_lines = 0
 " Configure markdown code block syntax highlighting
 let g:markdown_fenced_languages=['ruby', 'erb=eruby', 'javascript', 'html', 'sh']
