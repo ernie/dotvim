@@ -109,6 +109,7 @@ let g:neovide_input_use_logo=v:true
 vmap <D-c> "+y
 vmap <D-x> "+c
 map <D-v> <ESC>"+p
+cmap <D-v> <C-r><C-o>+
 imap <D-v> <C-r><C-o>+
 
 lua << END
