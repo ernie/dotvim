@@ -49,6 +49,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/promptline.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'overcache/NeoSolarized'
@@ -177,6 +178,7 @@ require('telescope').setup{
     -- please take a look at the readme of the extension you want to configure
   }
 }
+require('telescope').load_extension('fzf')
 END
 
 " Extra plugin configuration
