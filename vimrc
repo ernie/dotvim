@@ -113,8 +113,6 @@ imap <D-v> <C-r><C-o>+
 " Delete a buffer when asking for a "window close"
 map <D-w> <ESC>:confirm bd<CR>
 imap <D-w> <ESC>:confirm bd<CR>
-" Close vim if deleting the last buffer
-autocmd BufDelete * if len(filter(range(1, bufnr('$')), '! empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
 
 lua << END
 require'nvim-treesitter.configs'.setup {
