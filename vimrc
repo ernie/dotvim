@@ -103,13 +103,18 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
-" Sometimes folks just wanna use command-c/command-v
+" Sometimes folks just wanna use Mac-like keys
 let g:neovide_input_use_logo=v:true
 vmap <D-c> "+y
 vmap <D-x> "+c
-map <D-v> <ESC>"+p
+map <D-v> "+p
 cmap <D-v> <C-r><C-o>+
 imap <D-v> <C-r><C-o>+
+" Delete a buffer when asking for a "window close"
+map <D-w> <ESC>:confirm bd<CR>
+imap <D-w> <ESC>:confirm bd<CR>
+" Close vim if deleting the last buffer
+autocmd BufDelete * if len(filter(range(1, bufnr('$')), '! empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
 
 lua << END
 require'nvim-treesitter.configs'.setup {
