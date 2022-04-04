@@ -4,7 +4,6 @@ filetype plugin indent on
 set nocompatible
 
 set mouse=a
-set clipboard=unnamedplus
 set cursorline
 set hlsearch
 set incsearch
