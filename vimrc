@@ -114,6 +114,9 @@ imap <D-v> <C-r><C-o>+
 " Delete a buffer when asking for a "window close"
 map <D-w> <ESC>:confirm bd<CR>
 imap <D-w> <ESC>:confirm bd<CR>
+" Allow command-T to create a new tab
+map <D-t> <ESC>:tabnew<CR>
+imap <D-t> <ESC>:tabnew<CR>
 
 lua << END
 require'nvim-treesitter.configs'.setup {
