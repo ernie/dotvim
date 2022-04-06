@@ -123,6 +123,9 @@ imap <D-t> <ESC>:tabnew<CR>
 lua << END
 require('lspconfig').sorbet.setup {}
 require('lspconfig').tsserver.setup {}
+require('lspconfig').elixirls.setup{
+    cmd = { "/opt/elixir-ls/language_server.sh" };
+}
 
 require('nvim-treesitter.configs').setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
