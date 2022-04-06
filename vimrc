@@ -53,6 +53,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'overcache/NeoSolarized'
+Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
 colorscheme NeoSolarized
@@ -118,8 +119,12 @@ imap <D-w> <ESC>:confirm bd<CR>
 map <D-t> <ESC>:tabnew<CR>
 imap <D-t> <ESC>:tabnew<CR>
 
+" Consolidate the various lua config stuff in one spot
 lua << END
-require'nvim-treesitter.configs'.setup {
+require('lspconfig').sorbet.setup {}
+require('lspconfig').tsserver.setup {}
+
+require('nvim-treesitter.configs').setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
   ensure_installed = "maintained",
 
@@ -146,9 +151,7 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
-END
 
-lua << END
 require('telescope').setup{
   defaults = {
     layout_strategy = 'vertical',
