@@ -53,7 +53,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'overcache/NeoSolarized'
-Plug 'neovim/nvim-lspconfig'
+Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
 call plug#end()
 
 colorscheme NeoSolarized
@@ -121,12 +121,6 @@ imap <D-t> <ESC>:tabnew<CR>
 
 " Consolidate the various lua config stuff in one spot
 lua << END
-require('lspconfig').sorbet.setup {}
-require('lspconfig').tsserver.setup {}
-require('lspconfig').elixirls.setup{
-    cmd = { "/opt/elixir-ls/language_server.sh" };
-}
-
 require('nvim-treesitter.configs').setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
   ensure_installed = "maintained",
