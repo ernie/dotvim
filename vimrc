@@ -1,6 +1,5 @@
 syntax on
 filetype plugin indent on
-set shell=/opt/homebrew/bin/zsh
 
 set nocompatible
 
