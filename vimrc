@@ -253,17 +253,12 @@ set shortmess+=c
 
 set signcolumn=number
 
-inoremap <silent><expr> <Tab>
-  \ pumvisible() ?  "<C-n>" :
-  \ coc#expandableOrJumpable() ? coc#rpc#request('doKeymap', ['snippets-expand-jump','']) :
-  \ <SID>check_back_space() ? "\<Tab>" :
-  \ coc#refresh()
-inoremap <silent><expr> <S-Tab>
-  \ pumvisible() ?  "<C-p>" :
-  \ coc#expandableOrJumpable() ? coc#rpc#request('snippetPrev', []) : "\<S-Tab>"
-snoremap <silent><expr> <S-Tab>
-  \ pumvisible() ?  "<C-p>" :
-  \ coc#expandableOrJumpable() ? coc#rpc#request('snippetPrev', []) : "\<S-Tab>"
+" Help VS Code folks feel more at home
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -271,6 +266,16 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<Tab>'
+let g:coc_snippet_prev = '<S-Tab>'
+
+inoremap <S-Tab> <C-D>
+
+inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
+inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
