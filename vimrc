@@ -193,9 +193,6 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 let g:ackprg = 'rg --vimgrep --no-heading'
-" Improve appearance of vim-gitgutter
-sign define dummy
-au BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 " Improve behavior of vim-copy-as-rtf
 let g:html_font = 'Hack Nerd Font Mono'
 let g:html_number_lines = 0
