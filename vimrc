@@ -53,16 +53,16 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
-Plug 'navarasu/onedark.nvim'
+Plug 'tomasiser/vim-code-dark'
 call plug#end()
 
 set termguicolors
 set guifont=Hack\ Nerd\ Font\ Mono:h14
-colorscheme onedark
+let g:codedark_italics = 1
+colorscheme codedark
 
 set nobackup                      " Don't make a backup before overwriting a file.
 set nowritebackup                 " And again.
-" set noswapfile                    " Don't use swap files.
 set directory=$HOME/.vim/tmp//,.  " Keep swap files in one location
 
 " Highlight trailing whitespace
@@ -180,39 +180,6 @@ require('telescope').setup{
   }
 }
 require('telescope').load_extension('fzf')
-
-require('onedark').setup  {
-  -- Main options --
-  style = 'dark', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-  transparent = false,  -- Show/hide background
-  term_colors = true, -- Change terminal color as per the selected theme style
-  ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
-  -- toggle theme style ---
-  toggle_style_key = '<leader>ts', -- Default keybinding to toggle
-  toggle_style_list = {'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light'}, -- List of styles to toggle between
-
-  -- Change code style ---
-  -- Options are italic, bold, underline, none
-  -- You can configure multiple style with comma seperated, For e.g., keywords = 'italic,bold'
-  code_style = {
-    comments = 'italic',
-    keywords = 'none',
-    functions = 'none',
-    strings = 'none',
-    variables = 'none'
-  },
-
-  -- Custom Highlights --
-  colors = {}, -- Override default colors
-  highlights = {}, -- Override highlight groups
-
-  -- Plugins Config --
-  diagnostics = {
-    darker = true, -- darker colors for diagnostic
-    undercurl = true,   -- use undercurl instead of underline for diagnostics
-    background = true,  -- use background color for virtual text
-  },
-}
 END
 
 " Extra plugin configuration
@@ -231,7 +198,7 @@ let g:html_number_lines = 0
 let g:markdown_fenced_languages=['ruby', 'erb=eruby', 'javascript', 'html', 'sh']
 " Let's get airline looking pretty
 let g:airline_powerline_fonts = 1
-let g:airline_theme='onedark'
+let g:airline_theme='codedark'
 " And configure promptline, too
 let g:promptline_preset = {
         \'a' : [ promptline#slices#cwd() ],
