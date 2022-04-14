@@ -232,6 +232,12 @@ let g:markdown_fenced_languages=['ruby', 'erb=eruby', 'javascript', 'html', 'sh'
 " Let's get airline looking pretty
 let g:airline_powerline_fonts = 1
 let g:airline_theme='onedark'
+" And configure promptline, too
+let g:promptline_preset = {
+        \'a' : [ promptline#slices#cwd() ],
+        \'y' : [ promptline#slices#vcs_branch() ],
+        \'z' : [ promptline#slices#git_status() ],
+        \'warn' : [ promptline#slices#last_exit_code() ]}
 
 " CoC stuff from here down -- https://github.com/neoclide/coc.nvim
 
@@ -265,11 +271,6 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<Tab>'
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
